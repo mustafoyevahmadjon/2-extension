@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,17 @@
     <link rel="stylesheet" href="./popup.css">
     <title>Timero Extension</title>
 </head>
+
 <body>
-<div class="header">
-    <img src="../clock.png" alt="">
-</div>
-    <h1>00:00</h1>
+    <div class="header">
+        <img src="../clock.png" alt="">
+    </div>
+    <h1 id="time">00:00</h1>
     <button id="start_btn">Start</button>
+    <button id="reset_btn">Reset</button>
     <button id="add_task_btn">Add Task</button>
-<div id="task-container"></div>
-<script src="popup.js"></script>
+    <div id="task-container"></div>
+    <script src="popup.js"></script>
 </body>
+
 </html>

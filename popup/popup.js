@@ -1,5 +1,19 @@
 const addTaskBtn = document.getElementById("add_task_btn")
 let tasks = [];
+function updateTime() {
+    chrome.storage.local.get(["timer"],(result) => {
+        const time = document.getElementById("time")
+        const minutes= `${25 - Math.ceil(result.timer / 60)}`.padStart(2,"0")
+        let seconds = "00"
+        if(result.timer % 60 !=0 ) {
+            seconds = `${60 -result.timer % 60}`.padStart(2,"0")
+        }
+        time.textContent = `${minutes}:${seconds}`
+    })
+
+}
+updateTime()
+setInterval(updateTime, 1000)
 const startBtn = document.getElementById("start_btn")
 startBtn.addEventListener("click", () => {
     chrome.storage.local.get(["isRunning"], (result) => {
@@ -11,14 +25,24 @@ startBtn.addEventListener("click", () => {
     })
 })
 
+const resetBtn = document.getElementById("reset_btn")
+resetBtn.addEventListener("click",() => {
+    chrome.storage.local.set({
+        timer: 0,
+        isRunning: false
+    }, () => {
+        startBtn.textContent = "Start Timer"
+    })
+})
+
 addTaskBtn.addEventListener("click", () => addTask())
 chrome.storage.sync.get(["tasks"], (result) => {
     tasks = result.tasks ? result.tasks : []
     renderTasks()
 })
 
-function saveTasks () {
-    chrome.storage.sync.set({tasks})
+function saveTasks() {
+    chrome.storage.sync.set({ tasks })
 }
 
 function renderTask(taskNum) {
@@ -60,7 +84,7 @@ function deleteTask(taskNum) {
 
 function renderTasks() {
     const taskContainer = document.getElementById("task-container")
-    taskContainer.textContent= "";
+    taskContainer.textContent = "";
     tasks.forEach((taskText, taskNum) => {
         renderTask(taskNum)
     })
