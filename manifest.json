@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Timero Extension",
+  "version": "1.0.0",
+  "description": "Helps your focus and get things done !",
+  "icons": {
+    "16": "clock.png",
+    "32": "clock.png",
+    "48": "clock.png",
+    "128": "clock.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "clock.png",
+      "32": "clock.png",
+      "48": "clock.png",
+      "128": "clock.png"
+    },
+    "default_title": "Timer Extension Action",
+    "default_popup": "popup/popup.html"
+  }
+}

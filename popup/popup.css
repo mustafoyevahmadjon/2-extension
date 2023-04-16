@@ -1,0 +1,9 @@
+body {
+    width: 350px;
+    height: 400px;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
