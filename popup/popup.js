@@ -1,9 +1,9 @@
 const addTaskBtn = document.getElementById("add_task_btn")
 let tasks = [];
 function updateTime() {
-    chrome.storage.local.get(["timer"],(result) => {
+    chrome.storage.local.get(["timer", "timeOption"],(result) => {
         const time = document.getElementById("time")
-        const minutes= `${25 - Math.ceil(result.timer / 60)}`.padStart(2,"0")
+        const minutes= `${result.timeOption - Math.ceil(result.timer / 60)}`.padStart(2,"0")
         let seconds = "00"
         if(result.timer % 60 !=0 ) {
             seconds = `${60 -result.timer % 60}`.padStart(2,"0")

@@ -4,13 +4,13 @@ chrome.alarms.create("Timero Extension",{
 
 chrome.alarms.onAlarm.addListener((alarm) => {
     if(alarm.name = "Timero Extension") {
-        chrome.storage.local.get(["timer", "isRunning"], (result) => {
+        chrome.storage.local.get(["timer", "isRunning", "timeOption"], (result) => {
             if(result.isRunning) {
                 let timer = result.timer + 1
                 let isRunning = true
-                if(timer === 10) {
+                if(timer === 60 * result.timeOption) {
                     this.registration.showNotification("Time Extension", {
-                        body: "25 minut has passed !",
+                        body: `${timeOption} minutes has passed !`,
                         icon: "clock.png"
                     })
                     timer = 0
@@ -22,9 +22,10 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     }
 })
 
-chrome.storage.local.get(["timer", "isRunning"], (result) => {
+chrome.storage.local.get(["timer", "isRunning", "timeOption"], (result) => {
     chrome.storage.local.set({
         timer: "timer" in result ? result.timer : 0,
+        timeOption: "timeOption" in result ? result.timeOption : 25,
         isRunning: "isRunning" in result ? result.isRunning : false
     })
 })
