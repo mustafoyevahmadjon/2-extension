@@ -2,6 +2,7 @@ body {
     width: 350px;
     height: 400px;
     background-color: indianred;
+    font-family: segoe ui,sans-serif;
 }
 .header {
     display: flex;
@@ -10,4 +11,52 @@ body {
     background-color: whitesmoke;
     margin: -8px;
     padding: 5px;
+}
+.btn-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+#time {
+    text-align: center;
+    font-size: 50px;
+    font-weight: normal;
+    margin: 10px;
+    color: whitesmoke;
+}
+.btn-group > button {
+    color: indianred;
+    background-color: whitesmoke;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 5px;
+}
+#task-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.task-input {
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    width: 250px;
+    border-radius: 3px;
+}
+.task-delete {
+    outline: none;
+    border: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 3px;
+    color: indianred;
+    cursor: pointer;
+    font-weight: bold;
 }

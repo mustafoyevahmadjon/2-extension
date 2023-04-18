@@ -3,14 +3,14 @@ chrome.alarms.create("Timero Extension",{
 })
 
 chrome.alarms.onAlarm.addListener((alarm) => {
-    if(alarm.name = "Timero Extension") {
+    if(alarm.name = "Time Extension") {
         chrome.storage.local.get(["timer", "isRunning", "timeOption"], (result) => {
             if(result.isRunning) {
                 let timer = result.timer + 1
                 let isRunning = true
                 if(timer === 60 * result.timeOption) {
                     this.registration.showNotification("Time Extension", {
-                        body: `${timeOption} minutes has passed !`,
+                        body: `${result.timeOption} minutes has passed !`,
                         icon: "clock.png"
                     })
                     timer = 0

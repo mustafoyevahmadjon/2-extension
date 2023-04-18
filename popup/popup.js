@@ -1,7 +1,7 @@
 const addTaskBtn = document.getElementById("add_task_btn")
 let tasks = [];
 function updateTime() {
-    chrome.storage.local.get(["timer", "timeOption"],(result) => {
+    chrome.storage.local.get(["timer", "timeOption", "isRunning"],(result) => {
         const time = document.getElementById("time")
         const minutes= `${result.timeOption - Math.ceil(result.timer / 60)}`.padStart(2,"0")
         let seconds = "00"
@@ -9,6 +9,7 @@ function updateTime() {
             seconds = `${60 -result.timer % 60}`.padStart(2,"0")
         }
         time.textContent = `${minutes}:${seconds}`
+        startBtn.textContent = !result.isRunning ? "Start Timer" : "Pause Timer"
     })
 
 }
@@ -51,6 +52,7 @@ function renderTask(taskNum) {
     text.type = "text";
     text.placeholder = "Enter a task ..."
     text.value = tasks[taskNum];
+    text.className = "task-input"
     text.addEventListener("change", () => {
         tasks[taskNum] = text.value
         saveTasks()
@@ -59,6 +61,7 @@ function renderTask(taskNum) {
     const deleteBtn = document.createElement("input")
     deleteBtn.type = "button"
     deleteBtn.value = "X";
+    deleteBtn.className = "task-delete"
     deleteBtn.addEventListener("click", () => {
         deleteTask(taskNum)
     })

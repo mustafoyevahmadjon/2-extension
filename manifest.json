@@ -16,7 +16,7 @@
       "48": "clock.png",
       "128": "clock.png"
     },
-    "default_title": "Timer Extension Action",
+    "default_title": "Timero Extension Action",
     "default_popup": "popup/popup.html"
   },
   "permissions": ["storage","alarms","notifications"],
